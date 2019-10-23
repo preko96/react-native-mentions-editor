@@ -25,7 +25,7 @@ export class Editor extends React.Component {
         toggleEditor: PropTypes.func,
         showMentions: PropTypes.bool,
         onHideMentions: PropTypes.func,
-        editorStyles: PropTypes.object, 
+        editorStyles: PropTypes.object,
         placeholder: PropTypes.placeholder,
         renderMentionList: PropTypes.oneOfType([
             PropTypes.func,
@@ -36,11 +36,11 @@ export class Editor extends React.Component {
     constructor(props) {
         super(props);
         this.mentionsMap = new Map();
-        let msg = '' 
-        let formattedMsg = '' 
+        let msg = ''
+        let formattedMsg = ''
         if(props.initialValue && (props.initialValue !== '')){
-            msg = props.initialValue; 
-            formattedMsg = this.formatTextWithMentions(props.initialValue); 
+            msg = props.initialValue;
+            formattedMsg = this.formatTextWithMentions(props.initialValue);
         }
         this.state = {
             clearInput: props.clearInput,
@@ -97,7 +97,7 @@ export class Editor extends React.Component {
         }
 
         if (EU.whenTrue(this.props, prevProps, "showMentions")) {
-            //don't need to close on false; user show select it. 
+            //don't need to close on false; user show select it.
             this.onChange(this.state.inputText, true);
         }
     }
@@ -145,7 +145,7 @@ export class Editor extends React.Component {
     identifyKeyword(inputText) {
         /**
          * filter the mentions list
-         * according to what user type with 
+         * according to what user type with
          * @ char e.g. @billroy
          */
         if (this.isTrackingStarted) {
@@ -166,7 +166,7 @@ export class Editor extends React.Component {
 
     checkForMention(inputText, selection) {
         /**
-         * Open mentions list if user 
+         * Open mentions list if user
          * start typing @ in the string anywhere.
          */
         const menIndex = (selection.start - 1);
@@ -189,27 +189,27 @@ export class Editor extends React.Component {
          * extractInitialAndRemainingStrings
          * this function extract the initialStr and remainingStr
          * at the point of new Mention string.
-         * Also updates the remaining string if there 
+         * Also updates the remaining string if there
          * are any adjcent mentions text with the new one.
          */
-        // const {inputText, menIndex} = this.state;
+            // const {inputText, menIndex} = this.state;
         let initialStr = inputText.substr(0, menIndex).trim();
         if (!EU.isEmpty(initialStr)) {
             initialStr = initialStr + " ";
         }
-        /** 
-         * remove the characters adjcent with @ sign 
-         * and extract the remaining part          
-        */
+        /**
+         * remove the characters adjcent with @ sign
+         * and extract the remaining part
+         */
         let remStr = inputText
             .substr((menIndex + 1))
             .replace(/\s+/, '\x01')
             .split('\x01')[1] || '';
 
-        /** 
+        /**
          * check if there are any adjecent mentions
          * subtracted in current selection.
-         * add the adjcent mentions 
+         * add the adjcent mentions
          * @tim@nic
          * add nic back
          */
@@ -274,34 +274,34 @@ export class Editor extends React.Component {
             /**
              * if user make or remove selection
              * Automatically add or remove mentions
-             * in the selection.         
+             * in the selection.
              */
             newSelc = EU.addMenInSelection(newSelc, prevSelc, this.mentionsMap);
         }
         // else{
         /**
          * Update cursor to not land on mention
-         * Automatically skip mentions boundry             
+         * Automatically skip mentions boundry
          */
         // setTimeout(()=>{
 
         // })
-        // newSelc = EU.moveCursorToMentionBoundry(newSelc, prevSelc, this.mentionsMap, this.isTrackingStarted);                            
+        // newSelc = EU.moveCursorToMentionBoundry(newSelc, prevSelc, this.mentionsMap, this.isTrackingStarted);
         // }
         this.setState({ selection: newSelc });
     }
 
     formatMentionNode = (txt, key) => (
         <Text key={key} style={styles.mention}>
-            {txt}
+        {txt}
         </Text>
-    )
+)
 
     formateText(inputText) {
         /**
          * Format the Mentions
-         * and display them with 
-         * the different styles         
+         * and display them with
+         * the different styles
          */
 
         if (inputText === '' || !this.mentionsMap.size) return inputText;
@@ -357,11 +357,11 @@ export class Editor extends React.Component {
         }
         if (text.length < prevText.length) {
             /**
-             * if user is back pressing and it 
-             * deletes the mention remove it from 
-             * actual string. 
+             * if user is back pressing and it
+             * deletes the mention remove it from
+             * actual string.
              */
-            // debugger;
+                // debugger;
 
             let charDeleted = Math.abs(text.length - prevText.length);
             const totalSelection = {
@@ -377,7 +377,7 @@ export class Editor extends React.Component {
                     this.mentionsMap.delete(key);
                     /**
                      * don't need to worry about multi-char selection
-                     * because our selection automatically select the 
+                     * because our selection automatically select the
                      * whole mention string.
                      */
                     const initial = text.substring(0, (key[0]));//mention start index
@@ -396,9 +396,9 @@ export class Editor extends React.Component {
                 });
             }
             /**
-             * update indexes on charcters remove 
-             * no need to worry about totalSelection End. 
-             * We already removed deleted mentions from the actual string.              
+             * update indexes on charcters remove
+             * no need to worry about totalSelection End.
+             * We already removed deleted mentions from the actual string.
              * */
             this.updateMentionsMap({
                 start: selection.end,
@@ -414,7 +414,7 @@ export class Editor extends React.Component {
                 end: text.length
             }, charAdded, true);
             /**
-             * if user type anything on the mention            
+             * if user type anything on the mention
              * remove the mention from the mentions array
              * */
             if (selection.start === selection.end) {
@@ -432,15 +432,15 @@ export class Editor extends React.Component {
             // selection,
         });
         this.checkForMention(text, selection);
-        // const text = `${initialStr} @[${user.username}](id:${user.id}) ${remStr}`; //'@[__display__](__id__)' ///find this trigger parsing from react-mentions        
+        // const text = `${initialStr} @[${user.username}](id:${user.id}) ${remStr}`; //'@[__display__](__id__)' ///find this trigger parsing from react-mentions
 
         this.sendMessageToFooter(text);
     }
 
     onContentSizeChange = (evt) => {
         /**
-         * this function will dynamically 
-         * calculate editor height w.r.t 
+         * this function will dynamically
+         * calculate editor height w.r.t
          * the size of text in the input.
          */
         if (evt) {
@@ -454,17 +454,17 @@ export class Editor extends React.Component {
             let editorHeight = 40;
             editorHeight = editorHeight + (height);
             this.setState({
-                editorHeight
-            });            
+                editorHeight: height
+            });
         }
-    }    
+    }
 
     render() {
         const { props, state } = this;
         const {editorStyles = {}} = props;
-        
+
         if (!props.showEditor) return null;
-        
+
         const mentionListProps= {
             list: props.list,
             keyword: state.keyword,
@@ -474,59 +474,61 @@ export class Editor extends React.Component {
         };
 
         return (
-            <View styles={editorStyles.mainContainer}>
-                {
-                    props.renderMentionList ?
+            <>
+            {
+                props.renderMentionList ?
                     props.renderMentionList(mentionListProps) : (
-                        <MentionList
-                            list={props.list}
-                            keyword={state.keyword}
-                            isTrackingStarted={state.isTrackingStarted}
-                            onSuggestionTap={this.onSuggestionTap}
-                            editorStyles={editorStyles}
-                        />
-                    )
-                }
-                <View style={[styles.container, editorStyles.mainContainer]}>
+                    <MentionList
+                list={props.list}
+                keyword={state.keyword}
+                isTrackingStarted={state.isTrackingStarted}
+                onSuggestionTap={this.onSuggestionTap}
+                editorStyles={editorStyles}
+        />
+    )
+    }
+    <View style={editorStyles.rootContainer}>
+            <View style={[styles.container, editorStyles.mainContainer]}>
 
-                    <ScrollView ref={(scroll) => {this.scroll = scroll;}}
-                                 onContentSizeChange = {() => {this.scroll.scrollToEnd({animated: true})}}
-                                 style={[styles.editorContainer, editorStyles.editorContainer]}>
-                        <View style={[{ height: this.state.editorHeight }]}>
-                            <View style={[styles.formmatedTextWrapper, editorStyles.inputMaskTextWrapper]}>
-                                {
-                                    state.formattedText !== "" ?
-                                    <Text style={[styles.formmatedText, editorStyles.inputMaskText]}>
-                                        {state.formattedText}
-                                    </Text>
-                                    : 
-                                    <Text style={[styles.placeholderText, editorStyles.placeholderText]}> 
-                                        {state.placeholder}
-                                    </Text>
-                                }
-                            </View>
-                            <TextInput
-                                ref={input => props.onRef && props.onRef(input)}
-                                style={[styles.input, editorStyles.input]}
-                                multiline
-                                autoFocus
-                                numberOfLines={100}
-                                name={'message'}
-                                value={state.inputText}
-                                onBlur={props.toggleEditor}
-                                onChangeText={this.onChange}
-                                selection={this.state.selection}
-                                selectionColor={'#000'}
-                                onSelectionChange={this.handleSelectionChange}
-                                placeholder="Type something..."
-                                onContentSizeChange={this.onContentSizeChange}                                
-                                scrollEnabled={false}
-                            />
-                        </View>
-                    </ScrollView>
-                </View>                
-            </View>
-        );
+    <ScrollView ref={(scroll) => {this.scroll = scroll;}}
+        onContentSizeChange = {() => {this.scroll.scrollToEnd({animated: true})}}
+        style={[styles.editorContainer, editorStyles.editorContainer]}>
+    <View style={[{ height: this.state.editorHeight }, editorStyles.textContainer]}>
+    <View style={[styles.formmatedTextWrapper, editorStyles.inputMaskTextWrapper]}>
+        {
+            state.formattedText !== "" ?
+        <Text style={[styles.formmatedText, editorStyles.inputMaskText]}>
+            {state.formattedText}
+        </Text>
+        :
+        <Text style={[styles.placeholderText, editorStyles.placeholderText]}>
+            {state.placeholder}
+        </Text>
+        }
+    </View>
+        <TextInput
+        ref={input => props.onRef && props.onRef(input)}
+        style={[styles.input, editorStyles.input]}
+        multiline
+        autoFocus
+        numberOfLines={100}
+        name={'message'}
+        value={state.inputText}
+        onBlur={props.toggleEditor}
+        onChangeText={this.onChange}
+        selection={this.state.selection}
+        selectionColor={'#000'}
+        onSelectionChange={this.handleSelectionChange}
+        placeholder="Type something..."
+        onContentSizeChange={this.onContentSizeChange}
+        scrollEnabled={false}
+        />
+        </View>
+        </ScrollView>
+        </View>
+        </View>
+        </>
+    );
     }
 }
 
