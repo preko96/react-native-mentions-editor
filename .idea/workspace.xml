@@ -10,16 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21d538b4-61a5-49ed-9fd6-ff7846713aaa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Avatar/AvatarStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Avatar/AvatarStyles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Avatar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Avatar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Editor/EditorStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Editor/EditorStyles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Editor/EditorUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Editor/EditorUtils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Editor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Editor/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MentionList/MentionListStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MentionList/MentionListStyles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MentionList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MentionList/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Editor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Editor/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +65,8 @@
       <option name="presentableId" value="Default" />
       <updated>1571857481448</updated>
       <workItem from="1571857483315" duration="602000" />
-      <workItem from="1571858106527" duration="304000" />
+      <workItem from="1571858106527" duration="393000" />
+      <workItem from="1572258221901" duration="1571000" />
     </task>
     <servers />
   </component>
